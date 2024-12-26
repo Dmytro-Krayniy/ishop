@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+    {% if content %}
+        <p>{{ content }}</p>
+    {% else %}
+        <p>Here can be your content</p>
+    {% endif %}
+
+    <p>{{ list.0 }}</p>
+    <p>{{ dict.money }}</p>
+</body>
+</html>
