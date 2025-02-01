@@ -1,17 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Home</title>
-</head>
-<body>
-    {% if content %}
-        <p>{{ content }}</p>
-    {% else %}
-        <p>Here can be your content</p>
-    {% endif %}
+{% extends "main/base.html" %}
+{% load static %}
 
-    <p>{{ list.0 }}</p>
-    <p>{{ dict.money }}</p>
-</body>
-</html>
+{% block content %}
+    <div class="container">
+        <div class="m-5 p-1 custom-shadow rounded bg-light">
+            <h1 class="text-center"><strong>{{ content }}</strong></h1>
+        </div>
+    </div>
+{% endblock %}

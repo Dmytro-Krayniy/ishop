@@ -1,15 +1,21 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 
+from goods.models import Categories
+
 
 def index(request):
     data = {
+        'title': 'Головна',
         'content': 'Main page of ishop',
-        'list': ['first', 'second'],
-        'dict': {'name': 'Mit', 'money': '1 million $'},
+        'categories': Categories.objects.all()
     }
     return render(request, 'main/index.html', context=data)
 
 
 def about(request):
-    return HttpResponse('<h2 style="color:blue">About us page</h2>')
+    data = {
+        'title': 'О нас',
+        'content': 'About page of ishop',
+    }
+    return render(request, 'main/about.html', context=data)
