@@ -35,8 +35,11 @@ class Products(models.Model):
         verbose_name_plural = 'товари'
 
     @property
-    def discounted_price(self):
+    def sell_price(self):
         return round(self.price * Decimal(100 - self.discount) / Decimal(100.00), 2)
+
+    def display_id(self):
+        return f'{self.id:05}'
 
     def __str__(self):
         return self.name

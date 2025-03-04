@@ -2,25 +2,33 @@
 {% load static %}
 
 {% block content %}
-<div class="container my-5">
+<div class="container my-5 me-5">
     <h1 class="text-center bg-light"><strong>Our Collection</strong></h1>
     <div class="row z-1">
         {% for product in goods %}
             <div class="col-lg-3 col-md-6 p-4 z-1">
                 <div class="card border-primary rounded custom-shadow">
-                    <img src="{{ product.image.url }}" class="card-img-top" alt="Product 1">
-                    <img src="{{ product.image2.url }}" class="card-img-top hover-image" alt="Product 1-hover">
+                    <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+                    {% if product.image2 %}
+                        <img src="{{ product.image2.url }}" class="card-img-top hover-image" alt="{{ product.name }}">
+                    {% else %}
+                        <img src="{% static 'images/image_not_found.jpg' %}" class="card-img-top hover-image"
+                             alt="Second image not found">
+                    {% endif %}
                     <div class="card-body">
-                        <a href="../goods/product.html">
+                        <a href="/catalog/product/{{ product.slug }}">
                             <p class="card-title">{{ product.name }}</p>
                         </a>
                         <p class="card-text text-truncate">{{ product.description }}</p>
-                        <p class="product_id">id: 02265</p>
+                        <p class="product_id">id: {{ product.display_id }}</p>
                         <div class="d-flex justify-content-between">
-                            <p><s>{{ product.price }}</s> $</p>
-                            <p><strong>{{ product.discounted_price }} $</strong></p>
-                            <span class="badge bg-warning text-dark">Скидка {{product.discount}} %</span>
-                            <!-- <p><strong>100.00 $</strong></p> -->
+                            {% if product.discount %}
+                                <p><s>{{ product.price }}</s>$</p>
+                                <p class="ms-2"><strong>{{ product.sell_price }}$</strong></p>
+                                <span class="badge bg-warning text-dark">Скидка {{product.discount}} %</span>
+                            {% else %}
+                                <p><strong>{{ product.price }}</strong>$</p>
+                            {% endif %}
                             <a href="#" class="btn add-to-cart">
                                 <img class="mx-1" src="{% static 'icons/basket.png' %}" alt="Catalog Icon"
                                     width="32" height="32">

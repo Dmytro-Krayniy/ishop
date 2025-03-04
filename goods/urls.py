@@ -10,3 +10,4 @@ urlpatterns = [
     path('product/<slug:slug>', product, name='product'),
     path('scrape/', scrape_goods, name='scrape'),
 ]
+

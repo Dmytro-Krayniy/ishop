@@ -7,12 +7,12 @@
             <div class="row">
                 <!-- Миниатюры -->
                 <div class="col-md-4">
-                    <img src="{% static 'images/product1.jpg' %}"
+                    <img src="{{ product.image.url }}"
                         class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#imageModal1">
                 </div>
                 <div class="col-md-4 ">
-                    <h1 class="text-center"><strong>{{ content }}</strong></h1>
-                    <p class="product_id mt-3">id: 002654</p>
+                    <h1 class="text-center"><strong>{{ product.name }}</strong></h1>
+                    <p class="product_id mt-3">id: {{ product.display_id }}</p>
                 </div>
                 <!-- Увеличить изображение в модальном окне -->
                 <div class="modal fade" id="imageModal1" tabindex="-1"
@@ -34,9 +34,9 @@
             </div>
             <!-- Описание товара -->
             <div class="card-body">
-                <p class="card-text">Цена: <strong>150.00 $</strong></p>
-                <h5 class="card-title">Men's trousers</h5>
-                <p class="card-text">The best men's trousers I have ever seen</p>
+                <p class="card-text">Цена: <strong>{{ product.sell_price }} $</strong></p>
+                <h5 class="card-title">{{ product.name }}</h5>
+                <p class="card-text">{{ product.description }}</p>
                 <a href="#" class="btn btn-dark add-to-cart">Add to basket</a>
             </div>
         </div>
