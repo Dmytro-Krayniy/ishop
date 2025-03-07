@@ -82,7 +82,8 @@
                         <li><a class="dropdown-item text-white" href="{% url 'goods:catalog' %}">Всі товари</a></li>
                         {% tag_categories as categories %}
                         {% for cat in categories %}
-                            <li><a class="dropdown-item text-white" href="{% url 'goods:catalog' %}">{{ cat.name }}</a></li>
+                            <li><a class="dropdown-item text-white"
+                                   href="{% url 'goods:catalog' cat.slug %}">{{ cat.name }}</a></li>
                         {% endfor %}
                     </ul>
                 </div>

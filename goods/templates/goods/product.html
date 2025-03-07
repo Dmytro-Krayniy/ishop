@@ -7,7 +7,7 @@
             <div class="row">
                 <!-- Миниатюры -->
                 <div class="col-md-4">
-                    <img src="{{ product.image.url }}"
+                    <img src="{{ product.image.url }}" width=150
                         class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#imageModal1">
                 </div>
                 <div class="col-md-4 ">
@@ -20,13 +20,13 @@
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="imageModal1Label">Изображение 1</h5>
+                                <h5 class="modal-title" id="imageModal1Label">{{ product.name }}</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Закрыть"></button>
                             </div>
                             <div class="modal-body">
-                                <img src="{% static 'images/product1.jpg' %}"
-                                    class="img-fluid" alt="Изображение 1">
+                                <img src="{{ product.image.url }}"
+                                    class="img-fluid" alt="{{ product.name }}">
                             </div>
                         </div>
                     </div>

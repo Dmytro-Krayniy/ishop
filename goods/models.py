@@ -33,6 +33,7 @@ class Products(models.Model):
         db_table = 'product'
         verbose_name = 'товар'
         verbose_name_plural = 'товари'
+        ordering = ('id', )
 
     @property
     def sell_price(self):

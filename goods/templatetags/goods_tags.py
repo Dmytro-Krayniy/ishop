@@ -7,4 +7,5 @@ register = template.Library()
 
 @register.simple_tag()
 def tag_categories():
-    return Categories.objects.all()
+    categories_with_products = Categories.objects.filter(products__isnull=False).distinct()
+    return categories_with_products
